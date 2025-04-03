@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaleDünyası - Idle Cannon: Tower TD Geometry Resmi Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080b11',
+                        darkblue: '#162229',
+                        teal: '#05828e',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Inconsolata", monospace;
+        }
+
+
+
+
+        .terms-page {
+            background-color: #f9fafb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #162229;
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        .terms-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .terms-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #080b11;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .terms-title::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #05828e;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .terms-subtitle {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .terms-section {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .terms-section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #05828e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(5, 130, 142, 0.1);
+        }
+
+        .terms-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .terms-section a {
+            color: #05828e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .terms-section a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #05828e;
+            bottom: -2px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .terms-section a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .terms-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .terms-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .terms-back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #05828e;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .terms-back-button:hover {
+            background-color: #046d78;
+            transform: translateY(-2px);
+        }
+
+        .terms-back-button i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .terms-section {
+                padding: 30px 20px;
+            }
+
+            .terms-title {
+                font-size: 2rem;
+            }
+
+            .terms-section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-dark scrollbar-hide">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-white bg-opacity-90 shadow-md backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-teal text-white flex items-center justify-center animate-pulse-slow overflow-hidden">
+                        <i class="fas fa-chess-rook text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-teal">KaleDünyası</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-dark hover:text-teal focus:outline-none mt-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:flex flex-col md:flex-row md:items-center mt-4 md:mt-0 w-full md:w-auto">
+                <a href="/#anasayfa" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Ana Sayfa</a>
+                <a href="/#oynanis" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Oynanış</a>
+                <a href="/#ozellikler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Özellikler</a>
+                <a href="/#karakterler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Karakterler</a>
+                <a href="/#topluluğumuz" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Topluluk</a>
+                <a href="/#indir" class="ml-0 md:ml-4 mt-2 md:mt-0 py-2 px-6 font-bold text-white bg-teal hover:bg-opacity-90 rounded-full transition duration-300 text-center">İNDİR</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Kullanım Koşulları Sayfası Başlangıç -->
+    <section class="terms-page">
+        <div class="terms-container">
+            <div class="terms-header">
+                <h1 class="terms-title">Şartlar ve Koşullar</h1>
+                <p class="terms-subtitle">Lütfen sitemizi kullanmadan önce bu şartları ve koşulları dikkatlice okuyun. Siteyi kullanmaya devam etmeniz, bu koşulları kabul ettiğiniz anlamına gelir.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">Giriş</h2>
+                <p>KaleDünyası'na hoş geldiniz!</p>
+                <p>Bu şartlar ve koşullar, https://top-game-bonanza.com/ adresinde bulunan KaleDünyası Websitesi'nin kullanımı için kuralları ve düzenlemeleri ana hatlarıyla belirtmektedir.</p>
+                <p>Bu websitesine erişerek bu şartları ve koşulları kabul ettiğinizi varsayıyoruz. Bu sayfada belirtilen tüm şartları ve koşulları kabul etmiyorsanız KaleDünyası'nı kullanmaya devam etmeyin.</p>
+                <p>Şu terminoloji, bu Şartlar ve Koşullar, Gizlilik Beyanı ve Sorumluluk Reddi Bildirimi ile tüm Sözleşmeler için geçerlidir: "Müşteri", "Siz" ve "Sizin" bu websitesine giriş yapan ve Şirket'in şartlarına ve koşullarına uyan sizi ifade eder. "Şirket", "Kendimiz", "Biz", "Bizim" ve "Bize", Şirketimizi ifade eder. "Taraf", "Taraflar" veya "Biz", hem Müşteri'yi hem de kendimizi ifade eder. Tüm şartlar, Hollanda'nın geçerli yasalarına tabi olarak ve bunlara uygun olarak, Şirket'in belirtilen hizmetlerinin sağlanmasına ilişkin olarak Müşteri'nin ihtiyaçlarını karşılamak amacıyla Müşteri'ye yardım etme sürecimizi üstlenmek için gerekli olan ödeme teklifini, kabulünü ve değerlendirmesini ifade eder. Yukarıdaki terminolojinin veya diğer kelimelerin tekil, çoğul, büyük harfle yazılması ve/veya o/onlar olarak kullanımı, birbirinin yerine geçebilir olarak kabul edilir ve bu nedenle aynı şeyi ifade eder.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">Çerezler</h2>
+                <p>Çerezleri kullanıyoruz. KaleDünyası'na erişerek, KaleDünyası'nın Gizlilik Politikası'na uygun olarak çerez kullanımını kabul etmiş olursunuz.</p>
+                <p>Çoğu etkileşimli websitesi, her ziyaret için kullanıcı bilgilerini almamızı sağlayan çerezleri kullanır. Çerezler, websitemizin belirli alanlarının işlevselliğini etkinleştirmek ve websitemizi ziyaret eden kişiler için kolaylaştırmak amacıyla websitemiz tarafından kullanılır. Bazı ortak/reklam ortaklarımız da çerez kullanabilir.</p>
+            </div>
+            <div class="terms-section">
+                <h2 class="terms-section-title">Lisans</h2>
+                <p>Aksi belirtilmedikçe, KaleDünyası ve/veya lisans verenleri KaleDünyası'ndaki tüm materyaller için fikri mülkiyet haklarına sahiptir. Tüm fikri mülkiyet hakları saklıdır. Bu şartlar ve koşullarda belirtilen kısıtlamalara tabi olarak kendi kişisel kullanımınız için KaleDünyası'ndan buna erişebilirsiniz.</p>
+                <p>Şunları yapmamalısınız:</p>
+                <ul>
+                    <li>KaleDünyası'ndan materyal yeniden yayınlamak</li>
+                    <li>KaleDünyası'ndan materyal satmak, kiralamak veya alt lisansını vermek</li>
+                    <li>KaleDünyası'ndan materyal çoğaltmak, kopyalamak veya çoğaltmak</li>
+                    <li>KaleDünyası'ndan içerik yeniden dağıtmak</li>
+                </ul>
+                <p>Bu Sözleşme bu tarihte başlayacaktır.</p>
+                <p>Bu web sitesinin bazı bölümleri, kullanıcılara web sitesinin belirli alanlarında görüş ve bilgi paylaşma ve değiş tokuş etme fırsatı sunar. KaleDünyası, Yorumları web sitesinde yer almadan önce filtrelemez, düzenlemez, yayınlamaz veya incelemez. Yorumlar, KaleDünyası'nın, acentelerinin ve/veya ortaklarının görüş ve düşüncelerini yansıtmaz. Yorumlar, görüş ve düşüncelerini paylaşan kişinin görüş ve düşüncelerini yansıtır. Yürürlükteki yasaların izin verdiği ölçüde, KaleDünyası, Yorumlardan veya bu websitesindeki Yorumların herhangi bir kullanımı ve/veya gönderilmesi ve/veya görünümü sonucunda meydana gelen veya maruz kalınan herhangi bir sorumluluk, zarar veya masraftan sorumlu tutulamaz.</p>
+                <p>KaleDünyası, tüm Yorumları izleme ve uygunsuz, saldırgan olarak değerlendirilebilecek veya bu Şartlar ve Koşulların ihlaline neden olan Yorumları kaldırma hakkını saklı tutar.</p>
+                <p>Şunları garanti eder ve beyan edersiniz:</p>
+                <ul>
+                    <li>Websitemizde Yorumlar gönderme hakkına sahipsiniz ve bunu yapmak için gerekli tüm lisans ve onaylara sahipsiniz;</li>
+                    <li>Yorumlar, herhangi bir üçüncü tarafın, telif hakkı, patent veya ticari marka da dahil ancak bunlarla sınırlı olmamak üzere, herhangi bir fikri mülkiyet hakkını ihlal etmez;</li>
+                    <li>Yorumlar, mahremiyet ihlali olan herhangi bir karalayıcı, iftira niteliğinde, saldırgan, uygunsuz veya başka şekilde yasadışı materyal içermez;</li>
+                    <li>Yorumlar, işletme veya özel faaliyetleri veya ticari faaliyetleri veya yasadışı faaliyeti teşvik etmek veya tanıtmak için kullanılmayacaktır.</li>
+                </ul>
+                <p>Burada KaleDünyası'na, Yorumlarınızı herhangi bir formda, formatta veya medyada kullanmak, çoğaltmak, düzenlemek ve başkalarına kullanma, çoğaltma ve düzenleme yetkisi verme konusunda münhasır olmayan bir lisans veriyorsunuz.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">İçeriğimize Köprü Bağlantısı</h2>
+                <p>Aşağıdaki kuruluşlar, önceden yazılı onay almadan Websitemize bağlantı verebilir:</p>
+                <ul>
+                    <li>Devlet kurumları;</li>
+                    <li>Arama motorları;</li>
+                    <li>Haber kuruluşları;</li>
+                    <li>Çevrimiçi dizin dağıtımcıları, diğer listelenen işletmelerin Websitelerine köprü bağlantı verdikleri şekilde bizim Websitemize de bağlantı verebilirler; ve</li>
+                    <li>Kar amacı gütmeyen kuruluşlar, yardım alışveriş merkezleri ve websitemize köprü bağlantı veremeyecek olan yardım toplama grupları hariç, sistem genelinde Akredite İşletmeler.</li>
+                </ul>
+                <p>Bu kuruluşlar, bağlantı: (a) hiçbir şekilde aldatıcı olmadığı; (b) bağlantı veren tarafın ve ürünlerinin ve/veya hizmetlerinin sponsorluğunu, onayını veya kabulünü yanlış bir şekilde ima etmediği; ve (c) bağlantı veren tarafın sitesinin bağlamına uyduğu sürece ana sayfamıza, yayınlarımıza veya diğer Websitesi bilgilerine bağlantı verebilirler.</p>
+                <p>Aşağıdaki organizasyon türlerinden gelen diğer bağlantı taleplerini değerlendirebilir ve onaylayabiliriz:</p>
+                <ul>
+                    <li>yaygın olarak bilinen tüketici ve/veya işletme bilgi kaynakları;</li>
+                    <li>dot.com topluluk siteleri;</li>
+                    <li>hayır kurumlarını temsil eden dernekler veya diğer gruplar;</li>
+                    <li>çevrimiçi dizin dağıtımcıları;</li>
+                    <li>internet portalları;</li>
+                    <li>muhasebe, hukuk ve danışmanlık firmaları; ve</li>
+                    <li>eğitim kurumları ve ticaret birlikleri.</li>
+                </ul>
+                <p>Şu kararlara varırsak bu kuruluşlardan gelen bağlantı taleplerini onaylayacağız: (a) bağlantı bizi veya akredite işletmelerimizi olumsuz göstermeyecektir; (b) kuruluşun bizimle ilgili herhangi bir olumsuz kaydı yoktur; (c) köprü bağlantısının görünürlüğünden elde edeceğimiz fayda, KaleDünyası'nın yokluğunu telafi eder; ve (d) bağlantı genel kaynak bilgisi bağlamındadır.</p>
+                <p>Bu kuruluşlar, bağlantı: (a) hiçbir şekilde aldatıcı değilse; (b) bağlantı veren tarafın ve ürünlerinin veya hizmetlerinin sponsorluğunu, onayını veya kabulünü yanlış bir şekilde ima etmiyorsa; ve (c) bağlantı veren tarafın sitesinin bağlamına uyuyorsa ana sayfamıza bağlantı verebilirler.</p>
+                <p>Yukarıdaki 2. paragrafta listelenen kuruluşlardan biriyseniz ve websitemize bağlantı vermekle ilgileniyorsanız, KaleDünyası'na bir e-posta göndererek bizi bilgilendirmelisiniz. Lütfen adınızı, kuruluş adınızı, iletişim bilgilerinizin yanı sıra sitenizin URL'sini, Websitemize bağlantı vermeyi düşündüğünüz URL'lerin bir listesini ve bağlantı vermek istediğiniz sitemizdeki URL'lerin bir listesini ekleyin. Yanıt için 2-3 hafta bekleyin.</p>
+                <p>Onaylanan kuruluşlar aşağıdaki şekilde Websitemize köprü bağlantısı verebilir:</p>
+                <ul>
+                    <li>Kurumsal adımızın kullanımıyla; veya</li>
+                    <li>Bağlantı verilen tekdüzen kaynak bulucunun kullanımıyla; veya</li>
+                    <li>Bağlantı veren tarafın sitesindeki içeriğin bağlamı ve formatı içinde anlamlı olan Websitemizin bağlantı verildiği başka bir açıklamanın kullanımıyla.</li>
+                </ul>
+                <p>Ticari marka lisans anlaşması olmadan, KaleDünyası'nın logosu veya diğer sanat eserlerinin bağlantı için kullanılmasına izin verilmeyecektir.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">iFrame'ler</h2>
+                <p>Önceden onay ve yazılı izin olmadan, Websitemizin görsel sunumunu veya görünümünü herhangi bir şekilde değiştiren web sayfalarımız etrafında çerçeveler oluşturamazsınız.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">İçerik Sorumluluğu</h2>
+                <p>Websitenizde görünen herhangi bir içerikten sorumlu tutulamayız. Websitenizde ortaya çıkan tüm iddilara karşı bizi korumayı ve savunmayı kabul ediyorsunuz. Karalayıcı, müstehcen veya suç teşkil eden, veya herhangi bir üçüncü taraf haklarını ihlal eden, başka şekilde ihlal eden veya herhangi bir üçüncü taraf hakkının ihlalini veya başka ihlalini savunan şeklinde yorumlanabilecek herhangi bir Websitesinde hiçbir bağlantı görünmemelidir.</p>
+            </div>
+            <div class="terms-section">
+                <h2 class="terms-section-title">Hakların Saklı Tutulması</h2>
+                <p>Websitemize olan tüm bağlantıları veya herhangi bir belirli bağlantıyı kaldırmanızı talep etme hakkını saklı tutarız. Talep üzerine Websitemize olan tüm bağlantıları derhal kaldırmayı onaylıyorsunuz. Ayrıca, bu şartları ve koşulları ve bağlantı politikasını herhangi bir zamanda değiştirme hakkını saklı tutarız. Websitemize sürekli olarak bağlantı vererek, bu bağlantı şartları ve koşullarına bağlı kalmayı ve bunları izlemeyi kabul ediyorsunuz.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">Websitemizdeki bağlantıların kaldırılması</h2>
+                <p>Websitemizde herhangi bir nedenle saldırgan bulduğunuz herhangi bir bağlantı bulursanız, istediğiniz an iletişime geçip bizi bilgilendirmekten çekinmeyin. Bağlantıları kaldırma taleplerini değerlendireceğiz, ancak bunu yapmak veya size doğrudan yanıt vermek zorunda değiliz.</p>
+                <p>Bu websitesindeki bilgilerin doğru olduğunu garanti etmiyoruz, tamlığını veya doğruluğunu garanti etmiyoruz; ayrıca, websitesinin erişilebilir kalmasını veya websitesindeki materyalin güncel tutulmasını sağlamayı da taahhüt etmiyoruz.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-section-title">Sorumluluk Reddi</h2>
+                <p>Yürürlükteki yasaların izin verdiği azami ölçüde, websitemize ve bu websitenin kullanımına ilişkin tüm beyan, garanti ve koşulları hariç tutarız. Bu sorumluluk reddinde hiçbir şey:</p>
+                <ul>
+                    <li>sizin veya bizim ölüm veya kişisel yaralanma sorumluluğumuzu sınırlamayacak veya hariç tutmayacaktır;</li>
+                    <li>sizin veya bizim dolandırıcılık veya hileli yanlış beyan sorumluluğumuzu sınırlamayacak veya hariç tutmayacaktır;</li>
+                    <li>yürürlükteki yasa kapsamında izin verilmeyen herhangi bir şekilde sizin veya bizim sorumluluklarımızdan herhangi birini sınırlamayacaktır; veya</li>
+                    <li>yürürlükteki yasa kapsamında hariç tutulamayan sizin veya bizim sorumluluklarımızdan herhangi birini hariç tutmayacaktır.</li>
+                </ul>
+                <p>Bu Bölümde ve bu sorumluluk reddinin başka yerlerinde belirtilen sorumluluk sınırlamaları ve yasakları: (a) önceki paragrafa tabidir; ve (b) sözleşmeden, haksız fiilden ve yasal görevin ihlalinden doğan sorumluluklar da dahil olmak üzere, sorumluluk reddi kapsamında ortaya çıkan tüm sorumlulukları yönetir.</p>
+                <p>Websitesi ve websitesindeki bilgi ve hizmetler ücretsiz olarak sağlandığı sürece, herhangi bir nitelikteki kayıp veya hasardan sorumlu olmayacağız.</p>
+            </div>
+
+            <div class="terms-footer">
+                <a href="/" class="terms-back-button">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Kullanım Koşulları Sayfası Bitiş -->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 relative">
+        <div class="container mx-auto px-4">
+
+
+
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row md:justify-between items-center">
+                    <div class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2025 KaleDünyası. Tüm hakları saklıdır.
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="/Gizlilik826/" class="text-gray-400 hover:text-white transition duration-300">Gizlilik Politikası</a>
+                        <a href="/Kullanım346/" class="text-gray-400 hover:text-white transition duration-300">Kullanım Koşulları</a>
+                        <a href="/cerez23/" class="text-gray-400 hover:text-white transition duration-300">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Animation on Scroll Effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+
+                if (cardPosition < windowHeight * 0.8) {
+                    card.classList.add('opacity-100');
+                    card.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        });
+
+        // Background Animation
+        const heroSection = document.querySelector('#anasayfa');
+        if (heroSection) {
+            let particles = [];
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.width = heroSection.offsetWidth;
+            canvas.height = heroSection.offsetHeight;
+
+            heroSection.appendChild(canvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = '#05828e';
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x > canvas.width) this.x = 0;
+                    else if (this.x < 0) this.x = canvas.width;
+
+                    if (this.y > canvas.height) this.y = 0;
+                    else if (this.y < 0) this.y = canvas.height;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fill();
+                }
+            }
+
+            function createParticles() {
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', function() {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+                particles = [];
+                createParticles();
+            });
+
+            createParticles();
+            animateParticles();
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<?php
+$cookieConsentHtml = '
+<style>
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: #162229; /* Темно-синий цвет из палитры сайта */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 3px solid #05828e; /* Бирюзовый цвет из палитры сайта */
+}
+
+.cookie-container {
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.cookie-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.cookie-title i {
+    color: #05828e; /* Бирюзовый цвет из палитры сайта */
+    font-size: 1.25rem;
+}
+
+.cookie-text {
+    color: #e6e6e6;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 300; 
+}
+
+.cookie-link {
+    color: #05828e; /* Бирюзовый цвет из палитры сайта */
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cookie-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #05828e; /* Бирюзовый цвет из палитры сайта */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.cookie-link:hover::after {
+    transform: scaleX(1);
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.cookie-button-reject,
+.cookie-button-accept {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px; 
+}
+
+.cookie-button-reject {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.cookie-button-reject:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cookie-button-accept {
+    background: #05828e; /* Бирюзовый цвет из палитры сайта */
+    color: #ffffff;
+    border: 2px solid #05828e;
+}
+
+.cookie-button-accept:hover {
+    background: #069aaa; /* Более светлый оттенок бирюзового */
+    border-color: #069aaa;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .cookie-container {
+        flex-direction: column;
+        padding: 1.25rem;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1.25rem;
+        width: 100%;
+    }
+
+    .cookie-title {
+        margin-bottom: 0.75rem;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+    .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+    }
+    
+    .cookie-button-reject,
+    .cookie-button-accept {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+<div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-container">
+        <div class="cookie-content">
+            <h3 class="cookie-title">
+                <i class="fas fa-cookie-bite"></i>
+                Çerez Politikası
+            </h3>
+            <p class="cookie-text">
+                KaleDünyası oyun deneyiminizi geliştirmek için çerezler kullanıyoruz. Web sitemizi kullanmaya devam ederek çerezlerin kullanımını kabul etmiş olursunuz. Daha fazla bilgi için
+                <a href="/Gizlilik826/" class="cookie-link">Gizlilik Politikamızı</a>,
+                <a href="/Kullanım346/" class="cookie-link">Hizmet Şartlarımızı</a>
+                ve
+                <a href="/cerez23/" class="cookie-link">Çerez Politikamızı</a>
+                okuyabilirsiniz.
+            </p>
+        </div>
+        
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="cookie-button-reject">
+                Reddet
+            </button>
+            <button id="acceptCookies" class="cookie-button-accept">
+                Kabul Et
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   const cookieConsent = document.getElementById("cookieConsent");
+   const acceptBtn = document.getElementById("acceptCookies");
+   const rejectBtn = document.getElementById("rejectCookies");
+   
+   if (!getCookie("aprenderd_cookie_consent")) {
+       setTimeout(() => {
+           cookieConsent.style.transform = "translateX(0)";
+       }, 1000);
+   }
+
+   function getCookie(name) {
+       let matches = document.cookie.match(new RegExp(
+           "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+       ));
+       return matches ? decodeURIComponent(matches[1]) : undefined;
+   }
+   
+   function setCookie(name, value, days) {
+       const date = new Date();
+       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+       const expires = "; expires=" + date.toUTCString();
+       document.cookie = name + "=" + value + expires + "; path=/; SameSite=Strict; Secure";
+   }
+
+   function handleConsent(consent) {
+       setCookie("aprenderd_cookie_consent", consent, 365);
+       cookieConsent.style.transform = "translateX(120%)";
+       
+       setTimeout(() => {
+           cookieConsent.remove();
+       }, 500);
+   }
+
+   acceptBtn.addEventListener("click", () => handleConsent("accepted"));
+   rejectBtn.addEventListener("click", () => handleConsent("rejected"));
+});
+</script>
+';
+
+if (!isset($_COOKIE["aprenderd_cookie_consent"])) {
+    echo $cookieConsentHtml;
+}
+?>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaleDünyası - Idle Cannon: Tower TD Geometry Resmi Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080b11',
+                        darkblue: '#162229',
+                        teal: '#05828e',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Inconsolata", monospace;
+        }
+
+        .hero-pattern {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg width%3D%22100%25%22 height%3D%22100%25%22 viewBox%3D%220 0 1200 800%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3Cpattern id%3D%22grid%22 width%3D%2220%22 height%3D%2220%22 patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath d%3D%22M 20 0 L 0 0 0 20%22 fill%3D%22none%22 stroke%3D%22%2305828e22%22 stroke-width%3D%221%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 fill%3D%22%23080b11%22%2F%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 fill%3D%22url(%23grid)%22%2F%3E%3C%2Fsvg%3E');
+        }
+
+        .section-pattern {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg width%3D%22100%25%22 height%3D%22100%25%22 viewBox%3D%220 0 1200 800%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3Cpattern id%3D%22dots%22 width%3D%2220%22 height%3D%2220%22 patternUnits%3D%22userSpaceOnUse%22%3E%3Ccircle cx%3D%2210%22 cy%3D%2210%22 r%3D%221%22 fill%3D%22%2305828e33%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 fill%3D%22%23ffffff%22%2F%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 fill%3D%22url(%23dots)%22%2F%3E%3C%2Fsvg%3E');
+        }
+
+        .bg-blur {
+            backdrop-filter: blur(8px);
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-animate {
+            background: linear-gradient(90deg, #05828e, #162229, #080b11);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-dark scrollbar-hide">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-white bg-opacity-90 shadow-md backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-teal text-white flex items-center justify-center animate-pulse-slow overflow-hidden">
+                        <i class="fas fa-chess-rook text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-teal">KaleDünyası</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-dark hover:text-teal focus:outline-none mt-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:flex flex-col md:flex-row md:items-center mt-4 md:mt-0 w-full md:w-auto">
+                <a href="#anasayfa" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Ana Sayfa</a>
+                <a href="#oynanis" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Oynanış</a>
+                <a href="#ozellikler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Özellikler</a>
+                <a href="#karakterler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Karakterler</a>
+                <a href="#topluluğumuz" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Topluluk</a>
+                <a href="#indir" class="ml-0 md:ml-4 mt-2 md:mt-0 py-2 px-6 font-bold text-white bg-teal hover:bg-opacity-90 rounded-full transition duration-300 text-center">İNDİR</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="anasayfa" class="hero-pattern min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-dark to-transparent opacity-80"></div>
+
+        <div class="container mx-auto px-4 py-24 md:py-32 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <div class="inline-block px-4 py-1 bg-teal bg-opacity-20 rounded-full text-teal text-sm font-semibold mb-4">
+                        <i class="fas fa-star mr-1"></i> Türkiye'nin En Sevilen Kule Savunma Oyunu
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Stratejini Kur, <br />
+                        <span class="text-teal">Kulelerini İnşa Et</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
+                        Milyonlarca oyuncunun bağımlısı olduğu, strateji ve kule savunma türlerini harmanlayan eşsiz bir oyun deneyimi. Kulelerini inşa et, kahramanlarını topla ve düşmanlarını alt et!
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+                        <a href="#indir" class="py-4 px-8 bg-teal text-white font-bold rounded-xl hover:bg-opacity-90 transition duration-300 shadow-lg flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i> Hemen İndir
+                        </a>
+                        <a href="#oynanis" class="py-4 px-8 bg-white bg-opacity-10 backdrop-blur-sm text-white font-bold rounded-xl hover:bg-opacity-20 transition duration-300 border border-white border-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-play mr-2"></i> Oynanışı İzle
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center md:justify-end">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-teal rounded-3xl blur-xl opacity-20 animate-pulse-slow"></div>
+                        <img src="/src/img/main.png" alt="Idle Cannon: Tower TD Geometry" class="w-64 md:w-full h-auto relative z-10 rounded-3xl shadow-2xl border-4 border-white border-opacity-20 animate-float">
+                        <div class="absolute -top-4 -right-4 bg-teal text-white text-sm font-bold py-2 px-4 rounded-full shadow-lg  z-[100]">
+                            <i class="fas fa-star mr-1"></i> 4.2 Yıldız
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-white text-dark text-sm font-bold py-2 px-4 rounded-full shadow-lg">
+                            <i class="fas fa-download mr-1"></i> 100.000+ İndirme
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto">
+                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Oynanış Section -->
+    <section id="oynanis" class="section-pattern py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block py-1 px-3 rounded-full text-teal bg-teal bg-opacity-10 font-semibold text-sm mb-3">OYNANIS</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-4">Benzersiz Oyun Deneyimi</h2>
+                <div class="w-24 h-1 bg-teal mx-auto mb-6 rounded-full"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Stratejik derinlik ve kule savunma heyecanını birleştiren oyun mekanikleri ile tanışın.
+                    Her seviye, yeni taktikler geliştirmenizi gerektiren zorluklarla dolu!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                    <div class="h-48 bg-darkblue relative overflow-hidden">
+                        <img src="/src/img/expir1.png" alt="Stratejik Savunma" class="w-full h-full object-cover opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkblue to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-xl font-bold text-white mb-1">Stratejik Savunma</h3>
+                            <div class="w-12 h-1 bg-teal rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">
+                            En zorlu dalgaları püskürtmek için savunma stratejileri geliştirin. Kulelerin yerleşimi, tip seçimi ve yükseltmeleri taktiksel derinlik sağlar.
+                        </p>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Taktik</span>
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Strateji</span>
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Savunma</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                    <div class="h-48 bg-darkblue relative overflow-hidden">
+                        <img src="/src/img/expir2.png" alt="Kahraman Sistemi" class="w-full h-full object-cover opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkblue to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-xl font-bold text-white mb-1">Kahraman Sistemi</h3>
+                            <div class="w-12 h-1 bg-teal rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">
+                            Nadir kahramanları toplayın ve güçlendirin. Her kahramanın benzersiz yetenekleri ve savaş stratejileri, oyuna yeni bir boyut kazandırır.
+                        </p>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Gacha</span>
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Koleksiyon</span>
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Gelişim</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                    <div class="h-48 bg-darkblue relative overflow-hidden">
+                        <img src="/src/img/expir3.png" alt="Otonom Sistem" class="w-full h-full object-cover opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkblue to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-xl font-bold text-white mb-1">Otonom Sistem</h3>
+                            <div class="w-12 h-1 bg-teal rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">
+                            Çevrimdışıyken bile savunmanız çalışmaya devam eder. Oyuna döndüğünüzde biriktirdiğiniz kaynakları toplayın ve savunmanızı güçlendirin.
+                        </p>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Idle</span>
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Otomasyon</span>
+                            <span class="bg-teal bg-opacity-10 text-teal py-1 px-3 rounded-full text-sm font-medium">Gelişim</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-darkblue bg-opacity-95 rounded-3xl overflow-hidden shadow-xl relative">
+                <div class="absolute inset-0 opacity-20">
+                    <img src="/api/placeholder/1200/400" alt="Gameplay background" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 md:p-12 relative z-10">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white bg-opacity-10 text-white font-semibold text-sm mb-3">OYUN VİDEOSU</span>
+                            <h3 class="text-3xl font-bold text-white mb-4">Oyunu Aksiyon İçinde Görün</h3>
+                            <p class="text-gray-300 mb-6">
+                                Heyecan verici kule savunma stratejileri, epik savaşlar ve benzersiz kahramanlar. Oyun içi videomuzu izleyin ve Idle Cannon: Tower TD Geometry'nin sunduğu eşsiz deneyimi keşfedin.
+                            </p>
+                            <a href="https://youtu.be/ucc78AfANTw" target="_blank" class="inline-flex items-center py-3 px-6 bg-teal text-white font-bold rounded-xl hover:bg-opacity-90 transition duration-300">
+                                <i class="fas fa-play-circle mr-2 text-xl"></i> Oynanışı İzle
+                            </a>
+                        </div>
+                        <div class="md:w-1/2 flex justify-center">
+                            <div class="relative w-full max-w-md">
+                                <a href="https://youtu.be/ucc78AfANTw" target="_blank">
+                                    <div class="absolute inset-0 bg-teal rounded-xl blur-md opacity-20"></div>
+                                    <div class="relative rounded-xl overflow-hidden border-4 border-white border-opacity-10 shadow-2xl">
+                                        <img src="/src/img/trailer.png" alt="Oynanış Video" class="w-full h-auto">
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <div class="w-20 h-20 rounded-full bg-teal bg-opacity-90 flex items-center justify-center cursor-pointer transform transition-transform hover:scale-110">
+                                                <i class="fas fa-play text-white text-2xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Özellikler Section -->
+    <section id="ozellikler" class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-transparent"></div>
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0 bg-gradient-to-br from-dark to-darkblue opacity-10"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="inline-block py-1 px-3 rounded-full text-teal bg-teal bg-opacity-10 font-semibold text-sm mb-3">ÖZELLİKLER</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-4">Eşsiz Oyun Özellikleri</h2>
+                <div class="w-24 h-1 bg-teal mx-auto mb-6 rounded-full"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Idle Cannon: Tower TD Geometry ile strateji, kule savunma ve idle oyun mekaniklerinin mükemmel bir harmanını deneyimleyin.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2 border-t-4 border-teal">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-chess-rook text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">100+ Benzersiz Kule</h3>
+                    <p class="text-gray-600 mb-6">
+                        Farklı güçlere ve yeteneklere sahip 100'den fazla savunma kulesi ile kendi stratejinizi oluşturun. Her kulenin güçlendirme yolu ve özel yetenekleri bulunmaktadır.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Çeşitlilik</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Güçlendirme</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Sınırsız Kombinasyon</span>
+                    </div>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2 border-t-4 border-teal">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marked-alt text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">50+ Sürükleyici Seviye</h3>
+                    <p class="text-gray-600 mb-6">
+                        Her biri kendine özgü zorluklar ve haritalar sunan 50'den fazla seviye. Farklı arazi tipleri ve düşman dalgaları ile sürekli değişen bir oyun deneyimi.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Haritalar</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Zorluklar</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Keşif</span>
+                    </div>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2 border-t-4 border-teal">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-user-astronaut text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Efsanevi Kahramanlar</h3>
+                    <p class="text-gray-600 mb-6">
+                        Nadir ve efsanevi kahramanları toplama şansı yakalayın. Özel yetenekleri ve güçlü etkileşimleri ile kahramanlar, stratejinize yeni boyutlar katacak.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Gacha</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Koleksiyon</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Efsanevi Güçler</span>
+                    </div>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2 border-t-4 border-teal">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Otonom İlerleme</h3>
+                    <p class="text-gray-600 mb-6">
+                        Çevrimdışı olduğunuzda bile oyun devam eder. Savunmanız otomatik olarak çalışır ve döndüğünüzde topladığınız kaynakları kullanabilirsiniz.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Idle Sistem</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Çevrimdışı İlerleme</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Verimlilik</span>
+                    </div>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2 border-t-4 border-teal">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-gamepad text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Haftalık Etkinlikler</h3>
+                    <p class="text-gray-600 mb-6">
+                        Her hafta yeni mücadeleler ve ödüller. Özel etkinlikler ve turnuvalar ile sınırlarınızı zorlayın ve nadir kaynakları kazanma şansı elde edin.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Etkinlikler</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Turnuvalar</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Ödüller</span>
+                    </div>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2 border-t-4 border-teal">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Sosyal Etkileşim</h3>
+                    <p class="text-gray-600 mb-6">
+                        Arkadaşlarınızla birlikte oynayın, klanlar kurun ve ortak hedefler için mücadele edin. Topluluk etkinliklerine katılarak özel ödüllerin sahibi olun.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Klanlar</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">İşbirliği</span>
+                        <span class="bg-gray-100 text-gray-700 py-1 px-3 rounded-full text-sm font-medium">Rekabet</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gradient-animate rounded-3xl overflow-hidden shadow-2xl">
+                <div class="p-8 md:p-12 text-white relative z-10">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-2/3 mb-8 md:mb-0">
+                            <h3 class="text-3xl font-bold mb-4">Sınırlarınızı Zorlayın!</h3>
+                            <p class="text-xl text-gray-200 mb-6">
+                                Her biri kendine özgü özelliklere sahip yüzlerce kule, onlarca harita ve sonsuz kombinasyon ile stratejik derinliği keşfedin.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                <div class="bg-white bg-opacity-10 p-4 rounded-xl">
+                                    <div class="text-3xl font-bold mb-1">100+</div>
+                                    <div class="text-sm">Benzersiz Kule</div>
+                                </div>
+                                <div class="bg-white bg-opacity-10 p-4 rounded-xl">
+                                    <div class="text-3xl font-bold mb-1">50+</div>
+                                    <div class="text-sm">Zorlayıcı Seviye</div>
+                                </div>
+                                <div class="bg-white bg-opacity-10 p-4 rounded-xl">
+                                    <div class="text-3xl font-bold mb-1">30+</div>
+                                    <div class="text-sm">Kahraman</div>
+                                </div>
+                                <div class="bg-white bg-opacity-10 p-4 rounded-xl">
+                                    <div class="text-3xl font-bold mb-1">∞</div>
+                                    <div class="text-sm">Stratejik Seçenek</div>
+                                </div>
+                            </div>
+                            <a href="#indir" class="inline-flex items-center py-3 px-6 bg-white text-dark font-bold rounded-xl hover:bg-opacity-90 transition duration-300">
+                                <i class="fas fa-rocket mr-2"></i> Hemen Oynamaya Başla
+                            </a>
+                        </div>
+                        <div class="md:w-1/3 flex justify-center">
+                            <img src="/src/img/main.png" alt="Tower Defense" class="w-64 h-auto rounded-xl border-4 border-white border-opacity-20 shadow-2xl animate-float">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Topluluk Section -->
+    <section id="toplulugumuz" class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="section-pattern h-full w-full"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="inline-block py-1 px-3 rounded-full text-teal bg-teal bg-opacity-10 font-semibold text-sm mb-3">TOPLULUK</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-4">Topluluğumuza Katılın</h2>
+                <div class="w-24 h-1 bg-teal mx-auto mb-6 rounded-full"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Milyonlarca oyuncudan oluşan topluluğumuza katılın, stratejilerinizi paylaşın ve birlikte büyüyelim.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fab fa-discord text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Discord Topluluğu</h3>
+                    <p class="text-gray-600 mb-6">
+                        Resmi Discord sunucumuza katılın, diğer oyuncularla sohbet edin, ipuçları paylaşın ve özel etkinliklerden haberdar olun.
+                    </p>
+                    <a href="#indir" class="inline-flex items-center font-bold text-teal hover:text-dark transition duration-300">
+                        <span>Discord'a Katıl</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-trophy text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Turnuvalar</h3>
+                    <p class="text-gray-600 mb-6">
+                        Haftalık ve aylık turnuvalara katılın, becerilerinizi test edin ve özel ödüllerin sahibi olun. Sıralamada yerinizi alın.
+                    </p>
+                    <a href="#indir" class="inline-flex items-center font-bold text-teal hover:text-dark transition duration-300">
+                        <span>Turnuvaları Keşfet</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-teal bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-newspaper text-teal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Haberler ve Güncellemeler</h3>
+                    <p class="text-gray-600 mb-6">
+                        En son güncellemeler, etkinlikler ve oyun içeriği hakkında bilgi alın. Yeni özellikleri ilk siz keşfedin.
+                    </p>
+                    <a href="#indir" class="inline-flex items-center font-bold text-teal hover:text-dark transition duration-300">
+                        <span>Haberlere Göz At</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- İndir Section -->
+    <section id="indir" class="py-20 gradient-animate relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto transform rotate-180">
+                <path fill="#f9fafb" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 pt-12">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <span class="inline-block py-1 px-3 rounded-full bg-white bg-opacity-20 text-white font-semibold text-sm mb-3 mt-32">HEMEN İNDİR</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Maceraya Şimdi Başla!</h2>
+                    <p class="text-xl text-gray-200 mb-8">
+                        Idle Cannon: Tower TD Geometry'nin eşsiz dünyasında yerinizi alın. Stratejinizi kurun, kulelerinizi inşa edin ve düşmanlarınızı alt edin!
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4">
+                            <i class="fas fa-check-circle text-white text-xl mr-3"></i>
+                            <div class="text-white">100+ Benzersiz Kule</div>
+                        </div>
+                        <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4">
+                            <i class="fas fa-check-circle text-white text-xl mr-3"></i>
+                            <div class="text-white">30+ Kahraman</div>
+                        </div>
+                        <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4">
+                            <i class="fas fa-check-circle text-white text-xl mr-3"></i>
+                            <div class="text-white">Otonom İlerleme</div>
+                        </div>
+                        <div class="flex items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4">
+                            <i class="fas fa-check-circle text-white text-xl mr-3"></i>
+                            <div class="text-white">Stratejik Derinlik</div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://play.google.com/store/apps/details?id=com.idle.canon.the.tower.geometry.td.game&pcampaignid=web_share" target="_blank" class="py-4 px-8 bg-white text-dark font-bold rounded-xl hover:bg-opacity-90 transition duration-300 shadow-lg flex items-center justify-center">
+                            <i class="fab fa-google-play text-xl mr-2"></i>
+                            <div>
+                                <div class="text-xs">GOOGLE</div>
+                                <div class="text-sm">Play Store</div>
+                            </div>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/idle-cannon-tower-td-geometry/id6472633552?mt=8" target="_blank" class="py-4 px-8 bg-white text-dark font-bold rounded-xl hover:bg-opacity-90 transition duration-300 shadow-lg flex items-center justify-center">
+                            <i class="fab fa-apple text-xl mr-2"></i>
+                            <div>
+                                <div class="text-xs">APP</div>
+                                <div class="text-sm">App Store</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center md:justify-end relative">
+                    <div class="relative rounded-3xl shadow-2xl">
+                        <div class="absolute -inset-4 bg-white rounded-3xl blur-xl opacity-20"></div>
+                        <img src="/src/img/download.png" alt="Idle Cannon Game" class="w-64 md:w-full h-auto relative z-10 rounded-3xl border-4 border-white border-opacity-20 animate-float">
+
+                        <div class="absolute -top-6 -left-6 bg-white text-dark text-sm font-bold py-2 px-4 rounded-full shadow-lg animate-pulse-slow z-[100]">
+                            <i class="fas fa-exclamation-circle mr-1"></i> Yeni İçerikler!
+                        </div>
+
+                        <div class="absolute -bottom-6 -right-6 bg-white text-dark text-sm font-bold py-2 px-4 rounded-full shadow-lg animate-pulse-slow z-[100]">
+                            <i class="fas fa-star mr-1"></i> 100.000+ İndirme
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto">
+                <path fill="#080b11" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 relative">
+        <div class="container mx-auto px-4">
+
+
+
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row md:justify-between items-center">
+                    <div class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2025 KaleDünyası. Tüm hakları saklıdır.
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="/Gizlilik826/" class="text-gray-400 hover:text-white transition duration-300">Gizlilik Politikası</a>
+                        <a href="/Kullanım346/" class="text-gray-400 hover:text-white transition duration-300">Kullanım Koşulları</a>
+                        <a href="/cerez23/" class="text-gray-400 hover:text-white transition duration-300">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Animation on Scroll Effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+
+                if (cardPosition < windowHeight * 0.8) {
+                    card.classList.add('opacity-100');
+                    card.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        });
+
+        // Background Animation
+        const heroSection = document.querySelector('#anasayfa');
+        if (heroSection) {
+            let particles = [];
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.width = heroSection.offsetWidth;
+            canvas.height = heroSection.offsetHeight;
+
+            heroSection.appendChild(canvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = '#05828e';
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x > canvas.width) this.x = 0;
+                    else if (this.x < 0) this.x = canvas.width;
+
+                    if (this.y > canvas.height) this.y = 0;
+                    else if (this.y < 0) this.y = canvas.height;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fill();
+                }
+            }
+
+            function createParticles() {
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', function() {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+                particles = [];
+                createParticles();
+            });
+
+            createParticles();
+            animateParticles();
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<?php
+$cookieConsentHtml = '
+<style>
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: #162229; /* Темно-синий цвет из палитры сайта */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 3px solid #05828e; /* Бирюзовый цвет из палитры сайта */
+}
+
+.cookie-container {
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.cookie-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.cookie-title i {
+    color: #05828e; /* Бирюзовый цвет из палитры сайта */
+    font-size: 1.25rem;
+}
+
+.cookie-text {
+    color: #e6e6e6;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 300; 
+}
+
+.cookie-link {
+    color: #05828e; /* Бирюзовый цвет из палитры сайта */
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cookie-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #05828e; /* Бирюзовый цвет из палитры сайта */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.cookie-link:hover::after {
+    transform: scaleX(1);
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.cookie-button-reject,
+.cookie-button-accept {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px; 
+}
+
+.cookie-button-reject {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.cookie-button-reject:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cookie-button-accept {
+    background: #05828e; /* Бирюзовый цвет из палитры сайта */
+    color: #ffffff;
+    border: 2px solid #05828e;
+}
+
+.cookie-button-accept:hover {
+    background: #069aaa; /* Более светлый оттенок бирюзового */
+    border-color: #069aaa;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .cookie-container {
+        flex-direction: column;
+        padding: 1.25rem;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1.25rem;
+        width: 100%;
+    }
+
+    .cookie-title {
+        margin-bottom: 0.75rem;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+    .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+    }
+    
+    .cookie-button-reject,
+    .cookie-button-accept {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+<div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-container">
+        <div class="cookie-content">
+            <h3 class="cookie-title">
+                <i class="fas fa-cookie-bite"></i>
+                Çerez Politikası
+            </h3>
+            <p class="cookie-text">
+                KaleDünyası oyun deneyiminizi geliştirmek için çerezler kullanıyoruz. Web sitemizi kullanmaya devam ederek çerezlerin kullanımını kabul etmiş olursunuz. Daha fazla bilgi için
+                <a href="/Gizlilik826/" class="cookie-link">Gizlilik Politikamızı</a>,
+                <a href="/Kullanım346/" class="cookie-link">Hizmet Şartlarımızı</a>
+                ve
+                <a href="/cerez23/" class="cookie-link">Çerez Politikamızı</a>
+                okuyabilirsiniz.
+            </p>
+        </div>
+        
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="cookie-button-reject">
+                Reddet
+            </button>
+            <button id="acceptCookies" class="cookie-button-accept">
+                Kabul Et
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   const cookieConsent = document.getElementById("cookieConsent");
+   const acceptBtn = document.getElementById("acceptCookies");
+   const rejectBtn = document.getElementById("rejectCookies");
+   
+   if (!getCookie("aprenderd_cookie_consent")) {
+       setTimeout(() => {
+           cookieConsent.style.transform = "translateX(0)";
+       }, 1000);
+   }
+
+   function getCookie(name) {
+       let matches = document.cookie.match(new RegExp(
+           "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+       ));
+       return matches ? decodeURIComponent(matches[1]) : undefined;
+   }
+   
+   function setCookie(name, value, days) {
+       const date = new Date();
+       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+       const expires = "; expires=" + date.toUTCString();
+       document.cookie = name + "=" + value + expires + "; path=/; SameSite=Strict; Secure";
+   }
+
+   function handleConsent(consent) {
+       setCookie("aprenderd_cookie_consent", consent, 365);
+       cookieConsent.style.transform = "translateX(120%)";
+       
+       setTimeout(() => {
+           cookieConsent.remove();
+       }, 500);
+   }
+
+   acceptBtn.addEventListener("click", () => handleConsent("accepted"));
+   rejectBtn.addEventListener("click", () => handleConsent("rejected"));
+});
+</script>
+';
+
+if (!isset($_COOKIE["aprenderd_cookie_consent"])) {
+    echo $cookieConsentHtml;
+}
+?>

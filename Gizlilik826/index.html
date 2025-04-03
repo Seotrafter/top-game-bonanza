@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaleDünyası - Idle Cannon: Tower TD Geometry Resmi Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080b11',
+                        darkblue: '#162229',
+                        teal: '#05828e',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Inconsolata", monospace;
+        }
+
+        .privacy-page {
+            background-color: #f9fafb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #162229;
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        .privacy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .privacy-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #080b11;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .privacy-title::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #05828e;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .privacy-subtitle {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .privacy-section {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .privacy-section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #05828e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(5, 130, 142, 0.1);
+        }
+
+        .privacy-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section a {
+            color: #05828e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .privacy-section a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #05828e;
+            bottom: -2px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .privacy-section a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .privacy-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .privacy-section li p {
+            margin-bottom: 5px;
+        }
+
+        .privacy-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .privacy-back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #05828e;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .privacy-back-button:hover {
+            background-color: #046d78;
+            transform: translateY(-2px);
+        }
+
+        .privacy-back-button i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-section {
+                padding: 30px 20px;
+            }
+
+            .privacy-title {
+                font-size: 2rem;
+            }
+
+            .privacy-section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-dark scrollbar-hide">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-white bg-opacity-90 shadow-md backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-teal text-white flex items-center justify-center animate-pulse-slow overflow-hidden">
+                        <i class="fas fa-chess-rook text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-teal">KaleDünyası</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-dark hover:text-teal focus:outline-none mt-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:flex flex-col md:flex-row md:items-center mt-4 md:mt-0 w-full md:w-auto">
+                <a href="/#anasayfa" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Ana Sayfa</a>
+                <a href="/#oynanis" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Oynanış</a>
+                <a href="/#ozellikler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Özellikler</a>
+                <a href="/#karakterler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Karakterler</a>
+                <a href="/#topluluğumuz" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Topluluk</a>
+                <a href="/#indir" class="ml-0 md:ml-4 mt-2 md:mt-0 py-2 px-6 font-bold text-white bg-teal hover:bg-opacity-90 rounded-full transition duration-300 text-center">İNDİR</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!-- Gizlilik Politikası Sayfası Başlangıç -->
+    <section class="privacy-page">
+        <div class="privacy-container">
+            <div class="privacy-header">
+                <h1 class="privacy-title">KaleDünyası Gizlilik Politikası</h1>
+                <p class="privacy-subtitle">Kullanıcılarımızın gizliliği bizim için önemlidir. Lütfen kişisel verilerinizin nasıl toplandığı ve kullanıldığı hakkında bilgi almak için politikamızı inceleyin.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Giriş</h2>
+                <p>KaleDünyası olarak, https://top-game-bonanza.com/ adresinden erişilebilen sitemizin, ziyaretçilerimizin gizliliğine verdiğimiz büyük önemi vurgulamak isteriz. Bu Gizlilik Politikası belgesi, KaleDünyası tarafından toplanan ve kaydedilen bilgi türlerini ve bunların nasıl kullanıldığını içermektedir.</p>
+                <p>Eğer ek sorularınız varsa veya Gizlilik Politikamız hakkında daha fazla bilgi almak isterseniz, bizimle iletişime geçmekten çekinmeyin.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Log Dosyaları</h2>
+                <p>KaleDünyası, log dosyalarını kullanma konusunda standart bir prosedürü takip etmektedir. Bu dosyalar, ziyaretçiler web sitelerini ziyaret ettiğinde kaydedilir. Tüm barındırma şirketleri bunu yapar ve barındırma hizmetlerinin analizlerinin bir parçasıdır. Log dosyaları tarafından toplanan bilgiler, internet protokolü (IP) adresleri, tarayıcı türü, İnternet Servis Sağlayıcısı (ISP), tarih ve saat damgası, yönlendiren/çıkış sayfaları ve muhtemelen tıklama sayılarıdır. Bunlar, kişisel olarak tanımlanabilir bilgilerle bağlantılı değildir. Bu bilgilerin amacı, trendleri analiz etmek, siteyi yönetmek, kullanıcıların site üzerindeki hareketlerini izlemek ve demografik bilgiler toplamaktır. Gizlilik Politikamız, <a href="https://www.privacypolicyonline.com/privacy-policy-generator/">Gizlilik Politikası Üretici Aracı</a> yardımıyla oluşturulmuştur.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Çerezler ve Web Işaretçileri</h2>
+                <p>KaleDünyası, diğer web siteleri gibi "çerezler" kullanmaktadır. Bu çerezler, ziyaretçilerin tercihlerini ve ziyaret edilen sayfaları saklamak için kullanılır. Bu bilgiler, kullanıcı deneyimini optimize etmek amacıyla ziyaretçilerin tarayıcı türüne ve/veya diğer bilgilere dayalı olarak web sayfası içeriğini özelleştirmek için kullanılır.</p>
+                <p>Çerezler hakkında daha genel bilgi için, lütfen <a href="https://www.privacypolicyonline.com/what-are-cookies/">Gizlilik Politikası Üretici Aracı'ndan "Çerezler" makalesini</a> okuyun.</p>
+            </div>
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Google DoubleClick DART Çerezi</h2>
+                <p>Google, sitemizdeki üçüncü taraf satıcılardan biridir. Ayrıca, DART çerezleri olarak bilinen çerezleri kullanarak, www.website.com ve internet üzerindeki diğer sitelere yaptıkları ziyaretlere dayanarak ziyaretçilerimize reklamlar sunmaktadır. Ancak, ziyaretçiler DART çerezlerinin kullanımını, aşağıdaki URL'yi ziyaret ederek reddetme seçeneğine sahiptirler – <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Reklam Ortaklarımız</h2>
+                <p>Sitemizdeki bazı reklam verenler, çerezler ve web işaretçileri kullanabilir. Reklam ortaklarımız aşağıda listelenmiştir. Her bir reklam ortağımızın kullanıcı verileriyle ilgili kendi Gizlilik Politikası vardır. Daha kolay erişim için, bunların Gizlilik Politikalarına aşağıda bağlantı verilmiştir.</p>
+                <ul>
+                    <li>
+                        <p>Google</p>
+                        <p><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Gizlilik Politikaları</h2>
+                <p>KaleDünyası'nın reklam ortaklarının her birinin Gizlilik Politikasını bu listeyi inceleyerek bulabilirsiniz.</p>
+                <p>Üçüncü taraf reklam sunucuları veya reklam ağları, KaleDünyası'nda görünen reklamlar ve bağlantılar gibi teknolojiler kullanmaktadır. Bu reklamlar doğrudan kullanıcının tarayıcısına gönderilir. Bu olay gerçekleştiğinde otomatik olarak IP adresinizi alırlar. Bu teknolojiler, reklam kampanyalarının etkinliğini ölçmek ve/veya ziyaret ettiğiniz web sitelerinde gördüğünüz reklam içeriğini kişiselleştirmek için kullanılır.</p>
+                <p>Unutmayın ki KaleDünyası, üçüncü taraf reklam verenler tarafından kullanılan bu çerezler üzerinde herhangi bir erişim veya kontrol yetkisine sahip değildir.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Üçüncü Taraf Gizlilik Politikaları</h2>
+                <p>KaleDünyası'nın Gizlilik Politikası, diğer reklam verenler veya web siteleri için geçerli değildir. Bu nedenle, üçüncü taraf reklam sunucularının Gizlilik Politikalarını incelemenizi öneriyoruz. Bu politikalar, onların uygulamaları hakkında detaylı bilgi verebilir ve belirli seçeneklerden nasıl çıkılacağını açıklayabilir.</p>
+                <p>Çerezleri tarayıcı seçenekleriniz aracılığıyla devre dışı bırakmayı seçebilirsiniz. Belirli web tarayıcılarıyla ilgili çerez yönetimi hakkında daha ayrıntılı bilgi, tarayıcıların ilgili web sitelerinde bulunabilir. Çerezler Nedir?</p>
+            </div>
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Çocukların Bilgileri</h2>
+                <p>Bir diğer önceliğimiz ise interneti kullanırken çocukların korunmasını sağlamaktır. Ebeveynleri ve velileri, çocuklarının çevrimiçi etkinliklerini gözlemlemeye, katılmaya ve/veya rehberlik etmeye teşvik ediyoruz.</p>
+                <p>KaleDünyası, 13 yaş altındaki çocuklardan kasıtlı olarak kişisel olarak tanımlanabilir bilgi toplamaz. Eğer çocuğunuzun bu tür bilgileri web sitemizde sağladığını düşünüyorsanız, lütfen hemen bizimle iletişime geçin ve bu tür bilgileri kayıtlarımızdan en kısa sürede silmek için elimizden gelen çabayı göstereceğiz.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Sadece Çevrimiçi Gizlilik Politikası</h2>
+                <p>Bu Gizlilik Politikası yalnızca çevrimiçi etkinliklerimizi kapsar ve KaleDünyası'na ziyaretçiler tarafından paylaşılan ve/veya toplanan bilgileri içerir. Bu politika, çevrimdışı veya bu web sitesi dışındaki kanallar aracılığıyla toplanan herhangi bir bilgiye uygulanmaz.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="privacy-section-title">Onay</h2>
+                <p>Web sitemizi kullanarak, şu anda Gizlilik Politikamıza onay verdiğinizi ve Şartlar ve Koşullarını kabul ettiğinizi beyan etmiş olursunuz.</p>
+            </div>
+
+            <div class="privacy-footer">
+                <a href="/" class="privacy-back-button">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Gizlilik Politikası Sayfası Bitiş -->
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 relative">
+        <div class="container mx-auto px-4">
+
+
+
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row md:justify-between items-center">
+                    <div class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2025 KaleDünyası. Tüm hakları saklıdır.
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="/Gizlilik826/" class="text-gray-400 hover:text-white transition duration-300">Gizlilik Politikası</a>
+                        <a href="/Kullanım346/" class="text-gray-400 hover:text-white transition duration-300">Kullanım Koşulları</a>
+                        <a href="/cerez23/" class="text-gray-400 hover:text-white transition duration-300">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Animation on Scroll Effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+
+                if (cardPosition < windowHeight * 0.8) {
+                    card.classList.add('opacity-100');
+                    card.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        });
+
+        // Background Animation
+        const heroSection = document.querySelector('#anasayfa');
+        if (heroSection) {
+            let particles = [];
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.width = heroSection.offsetWidth;
+            canvas.height = heroSection.offsetHeight;
+
+            heroSection.appendChild(canvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = '#05828e';
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x > canvas.width) this.x = 0;
+                    else if (this.x < 0) this.x = canvas.width;
+
+                    if (this.y > canvas.height) this.y = 0;
+                    else if (this.y < 0) this.y = canvas.height;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fill();
+                }
+            }
+
+            function createParticles() {
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', function() {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+                particles = [];
+                createParticles();
+            });
+
+            createParticles();
+            animateParticles();
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<?php
+$cookieConsentHtml = '
+<style>
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: #162229; /* Темно-синий цвет из палитры сайта */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 3px solid #05828e; /* Бирюзовый цвет из палитры сайта */
+}
+
+.cookie-container {
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.cookie-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.cookie-title i {
+    color: #05828e; /* Бирюзовый цвет из палитры сайта */
+    font-size: 1.25rem;
+}
+
+.cookie-text {
+    color: #e6e6e6;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 300; 
+}
+
+.cookie-link {
+    color: #05828e; /* Бирюзовый цвет из палитры сайта */
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cookie-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #05828e; /* Бирюзовый цвет из палитры сайта */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.cookie-link:hover::after {
+    transform: scaleX(1);
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.cookie-button-reject,
+.cookie-button-accept {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px; 
+}
+
+.cookie-button-reject {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.cookie-button-reject:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cookie-button-accept {
+    background: #05828e; /* Бирюзовый цвет из палитры сайта */
+    color: #ffffff;
+    border: 2px solid #05828e;
+}
+
+.cookie-button-accept:hover {
+    background: #069aaa; /* Более светлый оттенок бирюзового */
+    border-color: #069aaa;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .cookie-container {
+        flex-direction: column;
+        padding: 1.25rem;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1.25rem;
+        width: 100%;
+    }
+
+    .cookie-title {
+        margin-bottom: 0.75rem;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+    .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+    }
+    
+    .cookie-button-reject,
+    .cookie-button-accept {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+<div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-container">
+        <div class="cookie-content">
+            <h3 class="cookie-title">
+                <i class="fas fa-cookie-bite"></i>
+                Çerez Politikası
+            </h3>
+            <p class="cookie-text">
+                KaleDünyası oyun deneyiminizi geliştirmek için çerezler kullanıyoruz. Web sitemizi kullanmaya devam ederek çerezlerin kullanımını kabul etmiş olursunuz. Daha fazla bilgi için
+                <a href="/Gizlilik826/" class="cookie-link">Gizlilik Politikamızı</a>,
+                <a href="/Kullanım346/" class="cookie-link">Hizmet Şartlarımızı</a>
+                ve
+                <a href="/cerez23/" class="cookie-link">Çerez Politikamızı</a>
+                okuyabilirsiniz.
+            </p>
+        </div>
+        
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="cookie-button-reject">
+                Reddet
+            </button>
+            <button id="acceptCookies" class="cookie-button-accept">
+                Kabul Et
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   const cookieConsent = document.getElementById("cookieConsent");
+   const acceptBtn = document.getElementById("acceptCookies");
+   const rejectBtn = document.getElementById("rejectCookies");
+   
+   if (!getCookie("aprenderd_cookie_consent")) {
+       setTimeout(() => {
+           cookieConsent.style.transform = "translateX(0)";
+       }, 1000);
+   }
+
+   function getCookie(name) {
+       let matches = document.cookie.match(new RegExp(
+           "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+       ));
+       return matches ? decodeURIComponent(matches[1]) : undefined;
+   }
+   
+   function setCookie(name, value, days) {
+       const date = new Date();
+       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+       const expires = "; expires=" + date.toUTCString();
+       document.cookie = name + "=" + value + expires + "; path=/; SameSite=Strict; Secure";
+   }
+
+   function handleConsent(consent) {
+       setCookie("aprenderd_cookie_consent", consent, 365);
+       cookieConsent.style.transform = "translateX(120%)";
+       
+       setTimeout(() => {
+           cookieConsent.remove();
+       }, 500);
+   }
+
+   acceptBtn.addEventListener("click", () => handleConsent("accepted"));
+   rejectBtn.addEventListener("click", () => handleConsent("rejected"));
+});
+</script>
+';
+
+if (!isset($_COOKIE["aprenderd_cookie_consent"])) {
+    echo $cookieConsentHtml;
+}
+?>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaleDünyası - Idle Cannon: Tower TD Geometry Resmi Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#080b11',
+                        darkblue: '#162229',
+                        teal: '#05828e',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Inconsolata", monospace;
+        }
+
+
+
+
+        .cookie-page {
+            background-color: #f9fafb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #162229;
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        .cookie-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cookie-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .cookie-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #080b11;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cookie-title::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #05828e;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .cookie-subtitle {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cookie-section {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .cookie-section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #05828e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(5, 130, 142, 0.1);
+        }
+
+        .cookie-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .cookie-section strong {
+            color: #162229;
+            font-weight: 600;
+        }
+
+        .cookie-section a {
+            color: #05828e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .cookie-section a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #05828e;
+            bottom: -2px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-section a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .cookie-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cookie-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cookie-table th {
+            background-color: rgba(5, 130, 142, 0.1);
+            color: #05828e;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 2px solid #05828e;
+        }
+
+        .cookie-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        .cookie-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cookie-table tr:hover td {
+            background-color: #f9fafb;
+        }
+
+        .cookie-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .cookie-back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #05828e;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cookie-back-button:hover {
+            background-color: #046d78;
+            transform: translateY(-2px);
+        }
+
+        .cookie-back-button i {
+            margin-right: 8px;
+        }
+
+        .cookie-tag {
+            display: inline-block;
+            background-color: rgba(5, 130, 142, 0.1);
+            color: #05828e;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-section {
+                padding: 30px 20px;
+            }
+
+            .cookie-title {
+                font-size: 2rem;
+            }
+
+            .cookie-section-title {
+                font-size: 1.3rem;
+            }
+
+            .cookie-table th,
+            .cookie-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-dark scrollbar-hide">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-white bg-opacity-90 shadow-md backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-teal text-white flex items-center justify-center animate-pulse-slow overflow-hidden">
+                        <i class="fas fa-chess-rook text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-teal">KaleDünyası</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-dark hover:text-teal focus:outline-none mt-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:flex flex-col md:flex-row md:items-center mt-4 md:mt-0 w-full md:w-auto">
+                <a href="/#anasayfa" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Ana Sayfa</a>
+                <a href="/#oynanis" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Oynanış</a>
+                <a href="/#ozellikler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Özellikler</a>
+                <a href="/#karakterler" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Karakterler</a>
+                <a href="/#topluluğumuz" class="py-2 px-4 font-medium text-dark hover:text-teal hover:bg-gray-100 rounded-lg transition duration-300 text-center md:text-left">Topluluk</a>
+                <a href="/#indir" class="ml-0 md:ml-4 mt-2 md:mt-0 py-2 px-6 font-bold text-white bg-teal hover:bg-opacity-90 rounded-full transition duration-300 text-center">İNDİR</a>
+            </nav>
+        </div>
+    </header>
+    >
+
+    <!-- Çerez Politikası Sayfası Başlangıç -->
+    <section class="cookie-page">
+        <div class="cookie-container">
+            <div class="cookie-header">
+                <h1 class="cookie-title">Çerez Politikası</h1>
+                <p class="cookie-subtitle">KaleDünyası web sitesindeki deneyiminizi geliştirmek için çerezleri nasıl kullandığımız hakkında bilgi edinin.</p>
+            </div>
+
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Çerez Politikası Hakkında</h2>
+                <p>Bu Çerez Politikası, KaleDünyası ("biz", "bize" veya "bizim") tarafından yönetilen https://top-game-bonanza.com/ web sitesinde çerezlerin ve benzer teknolojilerin nasıl kullanıldığını açıklamaktadır. Bu politika, hangi çerezleri kullandığımızı, bunları neden kullandığımızı ve çerez tercihlerinizi nasıl yönetebileceğinizi anlamanıza yardımcı olacaktır.</p>
+                <p>Web sitemizi ziyaret ettiğinizde, tarayıcınızı belirli çerezleri cihazınıza yerleştirmemize izin verecek şekilde ayarlayabilirsiniz. Çerezler, web sitesini kullanımınızı iyileştirmek, hizmetlerimizi geliştirmek ve size daha iyi ve kişiselleştirilmiş bir deneyim sunmak için kullanılan küçük veri dosyalarıdır.</p>
+                <p>Bu Çerez Politikası, <a href="/Gizlilik826/">Gizlilik Politikamızın</a> ve <a href="/Kullanım346/">Kullanım Koşullarımızın</a> ayrılmaz bir parçasıdır.</p>
+            </div>
+
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Çerez Nedir?</h2>
+                <p>Çerezler, ziyaret ettiğiniz web siteleri tarafından bilgisayarınıza, tabletinize veya mobil cihazınıza yerleştirilen küçük metin dosyalarıdır. Bunlar, web sitelerinin çalışması veya daha verimli çalışması için yaygın olarak kullanılır ve web sitesine, kullanıcılarının tercihlerini hatırlama ve kullanıcı deneyimini geliştirme yeteneği sağlar.</p>
+                <p>Çerezler, birkaç farklı şekilde sınıflandırılabilir:</p>
+                <ul>
+                    <li><strong>Oturum Çerezleri:</strong> Bu çerezler, tarayıcınızı kapattığınızda otomatik olarak silinir.</li>
+                    <li><strong>Kalıcı Çerezler:</strong> Bu çerezler, tarayıcınızı kapattıktan sonra da cihazınızda kalır ve web sitesini tekrar ziyaret ettiğinizde tanınmanızı sağlar.</li>
+                    <li><strong>Birinci Taraf Çerezleri:</strong> Bunlar, ziyaret ettiğiniz web sitesi tarafından yerleştirilir.</li>
+                    <li><strong>Üçüncü Taraf Çerezleri:</strong> Bunlar, ziyaret ettiğiniz web sitesi dışındaki hizmetler tarafından yerleştirilir (örneğin, analiz ve reklam hizmetleri).</li>
+                </ul>
+            </div>
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Kullandığımız Çerezler</h2>
+                <p>Web sitemizde aşağıdaki türlerde çerezler kullanmaktayız:</p>
+
+                <h3 class="cookie-section-title" style="font-size: 1.2rem;">Kesinlikle Gerekli Çerezler</h3>
+                <p>Bu çerezler, web sitemizin düzgün çalışması için gereklidir ve sistemlerimizde kapatılamazlar. Genellikle yalnızca sizin gerçekleştirdiğiniz ve gizlilik tercihlerinizi ayarlama, oturum açma veya form doldurma gibi hizmet taleplerine karşılık olarak belirlenir. Tarayıcınızı bu çerezleri engelleyecek şekilde ayarlayabilirsiniz, ancak bu durumda sitenin bazı bölümleri çalışmayabilir.</p>
+
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Çerez Adı</th>
+                            <th>Amaç</th>
+                            <th>Süre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>aprenderd_cookie_consent</td>
+                            <td>Çerez politikası bildirimine yanıtınızı saklar</td>
+                            <td>1 yıl</td>
+                        </tr>
+                        <tr>
+                            <td>PHPSESSID</td>
+                            <td>Kullanıcı oturumunuzu korumak için kullanılır</td>
+                            <td>Oturum</td>
+                        </tr>
+                        <tr>
+                            <td>xsrf-token</td>
+                            <td>Güvenlik amaçlı, siteler arası istek sahteciliğini önlemeye yardımcı olur</td>
+                            <td>Oturum</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="cookie-section-title" style="font-size: 1.2rem;">Performans ve Analiz Çerezleri</h3>
+                <p>Bu çerezler, ziyaretçilerin web sitemizi nasıl kullandığı hakkında bilgi toplamamıza olanak tanır. Bu bilgileri, sitemizi iyileştirmek ve kullanıcı deneyimini geliştirmek için kullanırız. Bu çerezler, bir ziyaretçiyi tanımlamaz.</p>
+
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Çerez Adı</th>
+                            <th>Amaç</th>
+                            <th>Süre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>_ga</td>
+                            <td>Google Analytics tarafından kullanıcıları ayırt etmek için kullanılır</td>
+                            <td>2 yıl</td>
+                        </tr>
+                        <tr>
+                            <td>_gid</td>
+                            <td>Google Analytics tarafından kullanıcıları ayırt etmek için kullanılır</td>
+                            <td>24 saat</td>
+                        </tr>
+                        <tr>
+                            <td>_gat</td>
+                            <td>Google Analytics tarafından istek oranını düşürmek için kullanılır</td>
+                            <td>1 dakika</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="cookie-section-title" style="font-size: 1.2rem;">İşlevsellik Çerezleri</h3>
+                <p>Bu çerezler, web sitemizin gelişmiş işlevsellik ve kişiselleştirme sunmasına olanak tanır. Bunlar, bizim tarafımızdan veya sitemize eklediğimiz üçüncü taraf hizmetleri tarafından belirlenebilir. Bu çerezlere izin vermezseniz, bu hizmetlerin bazıları veya tamamı düzgün çalışmayabilir.</p>
+
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Çerez Adı</th>
+                            <th>Amaç</th>
+                            <th>Süre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>user_preferences</td>
+                            <td>Kullanıcı arayüz tercihlerini saklar (tema, dil ayarları vb.)</td>
+                            <td>1 yıl</td>
+                        </tr>
+                        <tr>
+                            <td>recently_viewed</td>
+                            <td>Son görüntülenen içerik ve öğeleri hatırlar</td>
+                            <td>30 gün</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="cookie-section-title" style="font-size: 1.2rem;">Pazarlama ve Hedefleme Çerezleri</h3>
+                <p>Bu çerezler, web sitemiz aracılığıyla veya diğer web sitelerindeki diğer reklamlarımız aracılığıyla size gösterilecek reklamları seçmemize yardımcı olmak için kullanılabilir. Ziyaret ettiğiniz sayfaları ve arama sorgularınızı takip etmek için kullanabiliriz ve böylece size gösterilen reklamları kişiselleştirebiliriz. Bu çerezlere izin vermezseniz, daha az hedeflenmiş reklamlar görürsünüz.</p>
+
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Çerez Adı</th>
+                            <th>Amaç</th>
+                            <th>Süre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>_fbp</td>
+                            <td>Facebook tarafından kullanıcılara reklam sunmak için kullanılır</td>
+                            <td>3 ay</td>
+                        </tr>
+                        <tr>
+                            <td>IDE</td>
+                            <td>Google DoubleClick tarafından kullanıcıların reklamlara nasıl etkileşimde bulunduğunu kaydetmek için kullanılır</td>
+                            <td>1 yıl</td>
+                        </tr>
+                        <tr>
+                            <td>VISITOR_INFO1_LIVE</td>
+                            <td>YouTube tarafından kullanıcı bant genişliğini ölçmek için kullanılır</td>
+                            <td>6 ay</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Üçüncü Taraf Çerezleri</h2>
+                <p>Web sitemiz ayrıca üçüncü taraf hizmetlerinden gelen çerezleri de kullanmaktadır. Bu hizmetler şunları içerir:</p>
+                <div>
+                    <span class="cookie-tag">Google Analytics</span>
+                    <span class="cookie-tag">Google Ads</span>
+                    <span class="cookie-tag">Facebook Pixel</span>
+                    <span class="cookie-tag">YouTube</span>
+                </div>
+                <p style="margin-top: 20px;">Bu üçüncü taraf hizmetler, kendi çerez politikalarına sahiptir ve çerezlerinin kullanımı kendi gizlilik politikalarına tabidir. Bu hizmetlerin çerezleri hakkında daha fazla bilgi için lütfen ilgili gizlilik politikalarını inceleyin:</p>
+                <ul>
+                    <li><a href="https://policies.google.com/technologies/cookies" target="_blank">Google (Analytics, Ads)</a></li>
+                    <li><a href="https://www.facebook.com/policies/cookies/" target="_blank">Facebook</a></li>
+                    <li><a href="https://policies.google.com/privacy" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Çerezleri Nasıl Yönetebilirsiniz</h2>
+                <p>Çoğu web tarayıcısı, çerezleri kabul etmenize, reddetmenize veya belirli çerezleri silmenize olanak tanır. Çerez tercihlerinizi yönetmenin yolları, kullandığınız tarayıcıya bağlı olarak değişir. Aşağıdaki bağlantıları kullanarak en popüler tarayıcıların çerez ayarlarına erişebilirsiniz:</p>
+                <ul>
+                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+                    <li><a href="https://support.mozilla.org/tr/kb/cerezler-web-sitelerinin-bilgisayarinizda-depoladi" target="_blank">Mozilla Firefox</a></li>
+                    <li><a href="https://support.apple.com/tr-tr/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+                    <li><a href="https://support.microsoft.com/tr-tr/microsoft-edge/microsoft-edge-de-tanımlama-bilgilerini-silme-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank">Microsoft Edge</a></li>
+                    <li><a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank">Opera</a></li>
+                </ul>
+                <p>Ayrıca, aşağıdaki araçları kullanarak çevrimiçi reklamcılık için kullanılan çerezleri yönetebilirsiniz:</p>
+                <ul>
+                    <li><a href="https://optout.aboutads.info/" target="_blank">Digital Advertising Alliance (DAA) Opt-Out Tool</a></li>
+                    <li><a href="https://www.youronlinechoices.com/" target="_blank">Your Online Choices (AB/AEA)</a></li>
+                    <li><a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a></li>
+                </ul>
+                <p>Çerezlerin kullanımını kısıtlamanın, web sitemizin bazı özelliklerinin çalışma şeklini etkileyebileceğini unutmayın. Çerezleri tamamen devre dışı bırakırsanız, web sitemizin bazı bölümlerine erişemeyebilirsiniz.</p>
+            </div>
+
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Veri Güvenliği ve Saklama</h2>
+                <p>Çerezler aracılığıyla toplanan veriler, güvenli sistemlerde saklanır ve yetkisiz erişime, kullanıma veya ifşaya karşı korunur. Verileri yalnızca bu Çerez Politikası'nda belirtilen amaçlar için kullanır ve yalnızca bu amaçların gerçekleştirilmesi için gerekli olan süre boyunca saklarız.</p>
+                <p>Saklama süreleri, çerezin türüne ve kullanım amacına bağlı olarak değişir. Çoğu durumda:</p>
+                <ul>
+                    <li>Oturum çerezleri, tarayıcınızı kapattığınızda otomatik olarak silinir.</li>
+                    <li>Kalıcı çerezler genellikle belirli bir süre (1 gün ile 2 yıl arasında değişir) boyunca saklanır ve daha sonra otomatik olarak silinir.</li>
+                </ul>
+                <p>Topladığımız verilerin korunmasında ve güvenliğinde tüm makul tedbirleri almaktayız, ancak internet üzerinden veri iletiminin veya elektronik depolamanın %100 güvenli olduğunu garanti edemeyiz.</p>
+            </div>
+
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Çerez Politikası Güncellemeleri</h2>
+                <p>Bu Çerez Politikası'nı zaman zaman güncelleyebiliriz. Politikada yapılan önemli değişiklikler, web sitemizde belirgin bir bildirim yayınlanarak veya size doğrudan bildirim gönderilerek duyurulacaktır. Düzenli olarak bu sayfayı ziyaret ederek ve son güncelleme tarihini kontrol ederek değişikliklerden haberdar olabilirsiniz.</p>
+                <p>Bu politikanın en son güncellenme tarihi: <strong>7 Mart 2025</strong></p>
+            </div>
+
+            <div class="cookie-section">
+                <h2 class="cookie-section-title">Bize Ulaşın</h2>
+                <p>Bu Çerez Politikası veya çerezlerin kullanımı hakkında herhangi bir sorunuz varsa, lütfen aşağıdaki yollarla bizimle iletişime geçin:</p>
+                <ul>
+                    <li>E-posta: privacy@top-game-bonanza.com</li>
+                    <li>İletişim formumuz aracılığıyla: <a href="/iletisim/">İletişim Sayfası</a></li>
+                </ul>
+            </div>
+
+            <div class="cookie-footer">
+                <a href="/" class="cookie-back-button">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Çerez Politikası Sayfası Bitiş -->
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 relative">
+        <div class="container mx-auto px-4">
+
+
+
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row md:justify-between items-center">
+                    <div class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2025 KaleDünyası. Tüm hakları saklıdır.
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="/Gizlilik826/" class="text-gray-400 hover:text-white transition duration-300">Gizlilik Politikası</a>
+                        <a href="/Kullanım346/" class="text-gray-400 hover:text-white transition duration-300">Kullanım Koşulları</a>
+                        <a href="/cerez23/" class="text-gray-400 hover:text-white transition duration-300">Çerez Politikası</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Animation on Scroll Effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+
+                if (cardPosition < windowHeight * 0.8) {
+                    card.classList.add('opacity-100');
+                    card.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        });
+
+        // Background Animation
+        const heroSection = document.querySelector('#anasayfa');
+        if (heroSection) {
+            let particles = [];
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.width = heroSection.offsetWidth;
+            canvas.height = heroSection.offsetHeight;
+
+            heroSection.appendChild(canvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = '#05828e';
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x > canvas.width) this.x = 0;
+                    else if (this.x < 0) this.x = canvas.width;
+
+                    if (this.y > canvas.height) this.y = 0;
+                    else if (this.y < 0) this.y = canvas.height;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fill();
+                }
+            }
+
+            function createParticles() {
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', function() {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+                particles = [];
+                createParticles();
+            });
+
+            createParticles();
+            animateParticles();
+        }
+    </script>
+</body>
+
+</html>
